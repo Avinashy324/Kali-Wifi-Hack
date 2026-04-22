@@ -1,0 +1,18 @@
+Abstract
+WiFi WPA Handshake Capture & Security Assessment
+
+Avinash Yarukala (2420030568)
+Srikar Vadapalli (2420090012)
+
+With the rapid expansion of wireless communication technologies, securing WiFi networks has become increasingly important. WPA and WPA2 authentication protocols are widely implemented to protect wireless networks; however, their effectiveness largely depends on the strength of user-defined passwords. This project presents a detailed security assessment of WPA/WPA2 networks by capturing and analyzing WPA handshake packets, demonstrating how weak credentials can compromise network integrity.
+The experiment was conducted using Kali Linux and the Aircrack-ng suite, providing a practical environment for ethical penetration testing. The methodology begins with configuring the wireless network interface into monitor mode using Airmon-ng, enabling passive scanning of nearby access points. Airodump-ng is then used to identify target networks by capturing critical parameters such as BSSID, channel, and ESSID. Once a target access point is selected, continuous packet capture is initiated to record authentication traffic.
+To obtain the WPA handshake, a controlled deauthentication attack is performed using Aireplay-ng. This forces connected clients to temporarily disconnect and reconnect to the network, generating the required handshake packets. These packets are captured and stored for further analysis. The captured data is inspected using Wireshark, where EAPOL (Extensible Authentication Protocol over LAN) packets are filtered and analyzed to confirm successful handshake acquisition.
+Following successful capture, the project proceeds to password strength assessment using Aircrack-ng in conjunction with a predefined wordlist (RockYou). This step demonstrates how dictionary-based attacks can be used to recover weak passwords, highlighting the vulnerability of poorly secured networks. The process emphasizes the role of computational effort, wordlist quality, and password complexity in determining the feasibility of such attacks.
+The results of this project underline several critical insights:
+•	WPA/WPA2 protocols are secure in design but vulnerable to weak passwords 
+•	Handshake capture is a crucial step in offline password cracking attacks 
+•	Deauthentication attacks expose weaknesses in client-side reconnection behavior 
+•	Strong, complex passwords significantly increase resistance against dictionary attacks 
+In addition to technical implementation, this project reinforces ethical hacking principles by conducting all experiments in a controlled and authorized environment. It provides hands-on experience in wireless packet monitoring, network reconnaissance, and security auditing.
+Overall, this study bridges theoretical concepts of wireless security with real-world attack simulations, demonstrating the importance of robust password policies, secure configurations, and continuous
+
