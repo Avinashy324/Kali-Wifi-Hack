@@ -1,3 +1,8 @@
+<img width="967" height="568" alt="Screenshot 2026-03-04 112108" src="https://github.com/user-attachments/assets/a49f7007-d53f-43f2-8697-29e6c5faf6a1" />
+<img width="1009" height="868" alt="Screenshot 2026-03-02 081005" src="https://github.com/user-attachments/assets/af8fa8d7-f248-4379-bc76-dd2636564d0e" />
+<img width="657" height="462" alt="Screenshot 2026-03-02 080951" src="https://github.com/user-attachments/assets/4ad419af-388d-4083-9223-3555d6d43b3f" />
+<img width="682" height="461" alt="Screenshot 2026-03-02 080940" src="https://github.com/user-attachments/assets/84abf3fb-a5dc-408a-b285-bcaf9553f77d" />
+<img width="642" height="283" alt="Screenshot 2026-03-02 080924" src="https://github.com/user-attachments/assets/d55c0b9f-0c17-45c1-8c72-e9b1854a7a7f" />
 # WiFi WPA Handshake Capture & Security Assessment
 
 ## Overview
